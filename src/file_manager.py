@@ -4,19 +4,20 @@ from shapely.geometry import LineString
 import json
 import geopandas as gpd
 
-import requests
-import os
-from shapely.geometry import LineString
-import json
-import geopandas as gpd
-
 class FileManager:
     def __init__(self):
         self.overpass_url = "http://overpass-api.de/api/interpreter"
         self.data = {}  # Dictionary to store name/data pairs
         self.data_storage_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data")
 
-    def get_highway_data(self, name, overpass_query):
+    def get_highway_data(self, name, radius, coordinate, types):
+        latitude, longitude = coordinate
+        type_query = "|".join(types)
+        overpass_query = f"[out:json];way(around:{radius}, {latitude}, {longitude})[{type_query}];out geom;"
+        response = requests.get(self.overpass_url, params={"data": overpass_query})
+        self.data[name] = response.text
+
+    def get_highway_data_from_query(self, name, overpass_query):
         response = requests.get(self.overpass_url, params={"data": overpass_query})
         self.data[name] = response.text
 
@@ -56,13 +57,18 @@ def test_file_manager():
     coordinates = (48.051536, 8.206198)
     radius = 500
     overpass_query = f"[out:json];way(around:{radius}, {coordinates[0]}, {coordinates[1]})[highway];out geom;"
-    file_manager.get_highway_data("highway_data", overpass_query)
+    file_manager.get_highway_data_from_query("highway_data", overpass_query)
     file_manager.save_data_to_file("highway_data", "highway_data.json")
     file_manager.load_data_from_file("highway_data", "highway_data.json")
     gdf = file_manager.get_geodataframe_from_data("highway_data")
     print(gdf)
+    coordinate = (48.051536, 8.206198)
+    types = ["highway", "cycleway", "footway"]
+    file_manager.get_highway_data("highway_cycleway_footway_data", 1000, coordinate, types)
+    file_manager.save_data_to_file("highway_cycleway_footway_data", "test.json")
+
 
 if __name__ == '__main__':
-    #test_file_manager()
-    pass
+    test_file_manager()
+    #pass
 

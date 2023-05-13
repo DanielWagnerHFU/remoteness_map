@@ -1,0 +1,35 @@
+Autobahn
+
+[out:json];
+way(around:1000, 48.051536, 8.206198)[highway~"^(motorway|trunk)$"];
+out geom;
+
+Überland
+
+[out:json];
+way(around:1000, 48.051536, 8.206198)[highway~"^(primary|secondary|tertiary)$"];
+out geom;
+
+Innerorts
+
+[out:json];
+way(around:1000, 48.051536, 8.206198)[highway~"^(residential|service|living_street)$"];
+out geom;
+
+Forstwege
+
+[out:json];
+way(around:1000, 48.051536, 8.206198)[highway~"^(bridleway|track)$"];
+out geom;
+
+Fußwege
+
+[out:json];
+way(around:1000, 48.051536, 8.206198)[highway~"^(footway|path|cycleway|steps|pedestrian)$"];
+out geom;
+
+Sonstige
+
+[out:json];
+way(around:10000, 48.051536, 8.206198)[highway!="motorway"][highway!="trunk"][highway!="primary"][highway!="secondary"][highway!="tertiary"][highway!="residential"][highway!="service"][highway!="living_street"][highway!="bridleway"][highway!="track"][highway!="footway"][highway!="path"][highway!="cycleway"][highway!="steps"][highway!="pedestrian"][highway];
+out geom;
