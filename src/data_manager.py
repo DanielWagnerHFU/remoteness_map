@@ -20,14 +20,14 @@ class DataManager:
     def save_data_to_file(self, name, filename):
         if name in self.data:
             file_path = os.path.join(self.data_storage_path, filename)
-            with open(file_path, 'w') as file:
+            with open(file_path, 'w', encoding='utf-8') as file:
                 file.write(self.data[name])
         else:
             raise ValueError("Data with the specified name is missing. Load data before using this method.")
         
     def load_data_from_file(self, name, filename):
         file_path = os.path.join(self.data_storage_path, filename)
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             self.data[name] = file.read()
     
     def get_geodataframe_from_data(self, name):
@@ -51,18 +51,4 @@ class DataManager:
         else:
             raise ValueError("Data with the specified name is missing. Load data before using this method.")
 
-def test_data_manager():
-    data_manager = DataManager(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/openstreetmap"))
-    coordinates = (48.051536, 8.206198)
-    radius = 500
-    overpass_query = f"[out:json];way(around:{radius}, {coordinates[0]}, {coordinates[1]})[highway];out geom;"
-    data_manager.get_highway_data_from_query("highway_data", overpass_query)
-    data_manager.save_data_to_file("highway_data", "highway_data.json")
-    data_manager.load_data_from_file("highway_data", "highway_data.json")
-    gdf = data_manager.get_geodataframe_from_data("highway_data")
-    print(gdf)
-
-if __name__ == '__main__':
-    #test_data_manager()
-    pass
 
