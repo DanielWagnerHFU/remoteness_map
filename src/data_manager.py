@@ -46,7 +46,7 @@ class DataManager:
             raise ValueError("Data with the specified name is missing. Load data before using this method.")
 
 def test_data_manager():
-    data_manager = DataManager(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data"))
+    data_manager = DataManager(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/openstreetmap"))
     coordinates = (48.051536, 8.206198)
     radius = 500
     overpass_query = f"[out:json];way(around:{radius}, {coordinates[0]}, {coordinates[1]})[highway];out geom;"
