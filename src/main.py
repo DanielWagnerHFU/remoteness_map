@@ -5,24 +5,28 @@ import matplotlib.pyplot as plt
 import time
 import numpy as np
 
-lat_1, long_1, lat_2, long_2 = 48.036100, 8.179499, 48.065436, 8.235563
+radius, lat, long = 5000,48.051536,8.206198
+
 
 qm = QueryManager()
 dm = DataManager()
 qm.load_querys()
-data = qm.execute_query("interurban_roads",lat_1, long_1, lat_2, long_2)
+data = qm.execute_query("interurban_roads",radius, lat, long)
 dm.add_data("interurban_roads", data)
 dm.save_data_to_file("interurban_roads", "interurban_roads.json")
 
-data = qm.execute_query("city_streets",lat_1, long_1, lat_2, long_2)
+qm.load_querys()
+data = qm.execute_query("city_streets",radius, lat, long)
 dm.add_data("city_streets", data)
 dm.save_data_to_file("city_streets", "city_streets.json")
 
-data = qm.execute_query("forest_roads",lat_1, long_1, lat_2, long_2)
+qm.load_querys()
+data = qm.execute_query("forest_roads",radius, lat, long)
 dm.add_data("forest_roads", data)
 dm.save_data_to_file("forest_roads", "forest_roads.json")
 
-data = qm.execute_query("foot_paths",lat_1, long_1, lat_2, long_2)
+qm.load_querys()
+data = qm.execute_query("foot_paths",radius, lat, long)
 dm.add_data("foot_paths", data)
 dm.save_data_to_file("foot_paths", "foot_paths.json")
 
@@ -33,7 +37,7 @@ def rescale_matrix(matrix):
     return matrix
 
 def helper(name):
-    width = 300
+    width = 400
     dm.load_data_from_file(name, f"{name}.json")
     gdf = dm.get_geodataframe_from_data(name)
     rm = RemotenessMap(gdf, width=width)
@@ -60,11 +64,11 @@ def plot(matrix):
     plt.show()
 
 interurban_roads = helper("interurban_roads")
-#city_streets = helper("city_streets")
-#forest_roads = helper("forest_roads")
-#foot_paths = helper("foot_paths")
+city_streets = helper("city_streets")
+forest_roads = helper("forest_roads")
+foot_paths = helper("foot_paths")
 
-plot(rescale_matrix(interurban_roads))
+plot(rescale_matrix(np.add(np.add(interurban_roads, city_streets), np.add(forest_roads, foot_paths))))
 
 
 

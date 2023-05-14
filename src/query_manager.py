@@ -23,13 +23,13 @@ class QueryManager:
         
         return self.querys
     
-    def execute_query(self, query_name, lat_1, long_1, lat_2, long_2):
+    def execute_query(self, query_name, radius, lat, long):
         data = None
         if query_name not in self.querys:
             raise KeyError(f"Query '{query_name}' not found in the dictionary.")
 
         query = self.querys[query_name]
-        query = query.format(lat_1=lat_1,long_1=long_1,lat_2=lat_2,long_2=long_2)
+        query = query.format(radius=radius, lat=lat, long=long)
         try:
             response = requests.get(self.overpass_url, params={"data": query})
             response.raise_for_status()
@@ -37,3 +37,15 @@ class QueryManager:
         except requests.exceptions.RequestException as e:
             raise requests.exceptions.RequestException(f"Error executing Overpass query: {e}")
         return data
+    
+def test_query_manager():
+    file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/overpass_querys/query_dictionary.json")
+    qm = QueryManager(file_path)
+    qm.load_querys()
+    #print(loaded_dict)
+    print("\n")
+    print(qm.execute_query("foot_paths",1000,48.051536, 8.206198))
+
+if __name__ == '__main__':
+    test_query_manager()
+    #pass
