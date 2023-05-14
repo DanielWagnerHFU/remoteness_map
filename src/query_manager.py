@@ -34,7 +34,7 @@ class QueryManager:
         try:
             response = requests.get(self.overpass_url, params={"data": query})
             response.raise_for_status()
-            data = json.loads(response.text)
+            data = response.text
         except requests.exceptions.RequestException as e:
             raise requests.exceptions.RequestException(f"Error executing Overpass query: {e}")
         return data

@@ -4,5 +4,6 @@
     "forest_roads": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(bridleway|track)$\"];out geom;",
     "city_streets": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(residential|service|living_street)$\"];out geom;",
     "interurban_roads": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(primary|secondary|tertiary)$\"];out geom;",
-    "highway": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(motorway|trunk)$\"];out geom;"
+    "motorway": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(motorway|trunk)$\"];out geom;",
+    "all": "[out:json];way(around:{radius}, {lat}, {long})[highway];out geom;"
 }

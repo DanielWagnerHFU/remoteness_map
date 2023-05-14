@@ -10,6 +10,9 @@ class DataManager:
         self.data = {}
         self.data_storage_path = folder_path
 
+    def add_data(self, name, data):
+        self.data[name] = data
+
     def get_highway_data_from_query(self, name, overpass_query):
         response = requests.get(self.overpass_url, params={"data": overpass_query})
         self.data[name] = response.text
