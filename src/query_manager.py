@@ -1,4 +1,3 @@
-from data_manager import DataManager
 import json
 import os
 import requests

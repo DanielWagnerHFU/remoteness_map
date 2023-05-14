@@ -44,7 +44,10 @@ class DataManager:
                     }
                     features.append(feature)
             gdf = gpd.GeoDataFrame.from_features(features)
-            return gdf
+            target_crs = 'EPSG:32632'
+            gdf.crs = 'EPSG:4326'
+            gdf_projected = gdf.to_crs(target_crs)
+            return gdf_projected
         else:
             raise ValueError("Data with the specified name is missing. Load data before using this method.")
 
