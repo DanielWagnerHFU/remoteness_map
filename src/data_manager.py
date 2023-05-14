@@ -5,7 +5,7 @@ import json
 import geopandas as gpd
 
 class DataManager:
-    def __init__(self, folder_path):
+    def __init__(self, folder_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data/openstreetmap")):
         self.overpass_url = "http://overpass-api.de/api/interpreter"
         self.data = {}
         self.data_storage_path = folder_path

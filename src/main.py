@@ -20,7 +20,7 @@ overpass_query = f"""
 """
 
 response = requests.get(overpass_url, params={"data": overpass_query})
-data = json.loads(response.content)
+data = json.loads(response.text)
 features = []
 for element in data["elements"]:
     if element["type"] == "way" and "geometry" in element:
@@ -40,7 +40,7 @@ def calculate_minimum_distance(point, gdf):
     min_distance = distances.min()
     return min_distance
 
-def generate_distance_plot(gdf, resolution=0.0003):
+def generate_distance_plot(gdf, resolution=0.001):
     bounds = gdf.total_bounds
     minx, miny, maxx, maxy = bounds
     x = np.arange(minx, maxx, resolution)

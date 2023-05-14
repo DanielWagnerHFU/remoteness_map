@@ -1,0 +1,8 @@
+{
+    "misc": "[out:json];way(around:{radius}, {lat}, {long})[highway!=\"motorway\"][highway!=\"trunk\"][highway!=\"primary\"][highway!=\"secondary\"][highway!=\"tertiary\"][highway!=\"residential\"][highway!=\"service\"][highway!=\"living_street\"][highway!=\"bridleway\"][highway!=\"track\"][highway!=\"footway\"][highway!=\"path\"][highway!=\"cycleway\"][highway!=\"steps\"][highway!=\"pedestrian\"][highway];out geom;",
+    "foot_paths": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(footway|path|cycleway|steps|pedestrian)$\"];out geom;",
+    "forest_roads": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(bridleway|track)$\"];out geom;",
+    "city_streets": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(residential|service|living_street)$\"];out geom;",
+    "interurban_roads": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(primary|secondary|tertiary)$\"];out geom;",
+    "highway": "[out:json];way(around:{radius}, {lat}, {long})[highway~\"^(motorway|trunk)$\"];out geom;"
+}
