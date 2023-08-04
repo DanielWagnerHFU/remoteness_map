@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import time
 import numpy as np
 
-radius, lat, long = 5000,48.051536,8.206198
+radius, lat, long = 2000,48.051536,8.206198
 
 
 qm = QueryManager()
@@ -37,7 +37,7 @@ def rescale_matrix(matrix):
     return matrix
 
 def helper(name):
-    width = 400
+    width = 200
     dm.load_data_from_file(name, f"{name}.json")
     gdf = dm.get_geodataframe_from_data(name)
     rm = RemotenessMap(gdf, width=width)
@@ -68,7 +68,7 @@ city_streets = helper("city_streets")
 forest_roads = helper("forest_roads")
 foot_paths = helper("foot_paths")
 
-plot(rescale_matrix(np.add(np.add(interurban_roads, city_streets), np.add(forest_roads, foot_paths))))
+plot(rescale_matrix(city_streets))
 
 
 
