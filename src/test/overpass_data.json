@@ -1,8 +1,8 @@
 {
     "version": 0.6,
-    "generator": "Overpass API 0.7.61.4 df4c946a",
+    "generator": "Overpass API 0.7.61.5 4133829e",
     "osm3s": {
-        "timestamp_osm_base": "2023-08-04T12:56:05Z",
+        "timestamp_osm_base": "2023-11-28T18:57:00Z",
         "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
     },
     "elements": [
@@ -2114,10 +2114,10 @@
             "type": "way",
             "id": 169282213,
             "bounds": {
-                "minlat": 48.2778817,
-                "minlon": 8.8496119,
-                "maxlat": 48.277985,
-                "maxlon": 8.8496966
+                "minlat": 48.2778233,
+                "minlon": 8.8495873,
+                "maxlat": 48.2781639,
+                "maxlon": 8.8497567
             },
             "nodes": [
                 1804474880,
@@ -2128,27 +2128,33 @@
             ],
             "geometry": [
                 {
-                    "lat": 48.277985,
-                    "lon": 8.8496212
+                    "lat": 48.2781639,
+                    "lon": 8.8496336
                 },
                 {
-                    "lat": 48.2779819,
-                    "lon": 8.8496966
+                    "lat": 48.2781563,
+                    "lon": 8.8497567
                 },
                 {
-                    "lat": 48.2778817,
-                    "lon": 8.8496873
+                    "lat": 48.2778233,
+                    "lon": 8.8497105
                 },
                 {
-                    "lat": 48.2778849,
-                    "lon": 8.8496119
+                    "lat": 48.2778309,
+                    "lon": 8.8495873
                 },
                 {
-                    "lat": 48.277985,
-                    "lon": 8.8496212
+                    "lat": 48.2781639,
+                    "lon": 8.8496336
                 }
             ],
             "tags": {
+                "addr:city": "Balingen",
+                "addr:country": "DE",
+                "addr:housenumber": "4",
+                "addr:postcode": "72336",
+                "addr:street": "Albrechtstraße",
+                "building": "yes",
                 "removed:building": "garage"
             }
         },
