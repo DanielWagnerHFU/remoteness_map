@@ -1,0 +1,20 @@
+{
+    "info": {
+        "version": "0"
+    },
+    "types": [
+        {
+            "map_type": "all_ways",
+            "description": "A map of all ways",
+            "source" :
+            {
+                "name": "overpass api",
+                "api_endpoint": "http://overpass-api.de/api/interpreter",
+                "query_scheme": "[out:json];way(around:{radius}, {lat}, {long})[highway];out geom;"
+            }
+        },
+        {
+            "map_type": "all_ways_test"
+        }
+    ]
+}
