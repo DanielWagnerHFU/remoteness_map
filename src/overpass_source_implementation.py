@@ -12,7 +12,6 @@ class OverpassSourceImplementation(MapSourceImplementation):
         self.query_scheme = source_json["query_scheme"]
 
     def get_map(self, map_info: MapInfo) -> Map:
-        #TODO
-        formatted_query: str = eval(f'f"""{self.query_scheme}"""')
-        print(formatted_query)
-        return Map()
+        formatted_query: str = self.query_scheme.format(radius = map_info.height_meter, lat = map_info.latitude, long = map_info.longitude)
+        map_data: str = self.overpass_api_client.execute_query(formatted_query)
+        return Map(map_data)
