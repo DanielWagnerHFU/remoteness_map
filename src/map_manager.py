@@ -31,6 +31,3 @@ if __name__ == "__main__":
         map_manager.initialize_map_sources()
         map_info: MapInfo = MapInfo("all_ways", {"latitude": 48.26859652235137, "longitude": 8.838723012168243}, {"height_meter": 100, "width_meter": 100})
         map_manager.get_map(map_info)
-
-        #map_info: MapInfo = MapInfo("all_ways", {"latitude": 48.26859652235137, "longitude": 8.838723012168243}, {"height_meter": 100, "width_meter": 100})
-        #map_manager.build_map(map_info)
