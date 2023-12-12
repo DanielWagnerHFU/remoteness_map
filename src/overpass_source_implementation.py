@@ -3,6 +3,7 @@ from map import Map
 from typing import Any, Dict
 from map_info import MapInfo
 from overpass_api_client import OverpassAPIClient
+import json
 
 class OverpassSourceImplementation(MapSourceImplementation):
 
@@ -14,4 +15,5 @@ class OverpassSourceImplementation(MapSourceImplementation):
     def get_map(self, map_info: MapInfo) -> Map:
         formatted_query: str = self.query_scheme.format(radius = map_info.height_meter, lat = map_info.latitude, long = map_info.longitude)
         map_data: str = self.overpass_api_client.execute_query(formatted_query)
-        return Map(map_data)
+        map_json = json.loads(map_data)
+        return Map()
