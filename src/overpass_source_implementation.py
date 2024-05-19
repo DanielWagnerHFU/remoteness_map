@@ -1,3 +1,4 @@
+import numpy as np
 from map_source_implementation import MapSourceImplementation
 from map import Map
 from typing import Any, Dict
@@ -16,4 +17,6 @@ class OverpassSourceImplementation(MapSourceImplementation):
         formatted_query: str = self.query_scheme.format(radius = map_info.height_meter, lat = map_info.latitude, long = map_info.longitude)
         map_data: str = self.overpass_api_client.execute_query(formatted_query)
         map_json = json.loads(map_data)
-        return Map()
+        #TODO
+        
+        return Map(None, map_info)
