@@ -12,23 +12,16 @@ using namespace DistanceTransform;
 
 void test_01() {
     cv::Mat image = cv::Mat(11, 11, CV_8UC1, cv::Scalar(0));
-    cv::circle(image, cv::Point(5, 5), 0, cv::Scalar(255), cv::FILLED);
+    cv::circle(image, cv::Point(5, 10), 0, cv::Scalar(255), cv::FILLED);
+    cv::line(image, cv::Point(0, 5), cv::Point(10, 5), cv::Scalar(255), 1);
     cv::bitwise_not(image, image);
     std::cout << image << std::endl;
-    cv::namedWindow("Zoomed Image", cv::WINDOW_NORMAL);
-    cv::resizeWindow("Zoomed Image", image.cols * 50, image.rows * 50);
-    cv::imshow("Zoomed Image", image);
-    cv::waitKey(0);
 
     DistanceTransformContext context;
     context.set_strategy(std::make_unique<CV2EuclideanDistanceTransformStrategy>());
     cv::Mat distanceTransform = context.execute(image);
     cv::normalize(distanceTransform, distanceTransform, 0, 255, cv::NORM_MINMAX, CV_8UC1);
     std::cout << distanceTransform << std::endl;
-    cv::namedWindow("Zoomed Image", cv::WINDOW_NORMAL);
-    cv::resizeWindow("Zoomed Image", distanceTransform.cols * 50, distanceTransform.rows * 50);
-    cv::imshow("Zoomed Image", distanceTransform);
-    cv::waitKey(0);
 
     cv::Mat combined(image.rows, image.cols + distanceTransform.cols, image.type());
     image.copyTo(combined(cv::Rect(0, 0, image.cols, image.rows)));
