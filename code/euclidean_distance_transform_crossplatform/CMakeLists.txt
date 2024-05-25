@@ -1,7 +1,4 @@
-﻿# CMakeList.txt : Top-level CMake project file, do global configuration
-# and include sub-projects here.
-#
-cmake_minimum_required (VERSION 3.8)
+﻿cmake_minimum_required (VERSION 3.8)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -10,6 +7,10 @@ if (POLICY CMP0141)
 endif()
 
 project ("euclidean_distance_transform_crossplatform")
+
+# Shared packages
+find_package(OpenCV REQUIRED)
+
 
 # Include sub-projects.
 add_subdirectory ("euclidean_distance_transform_app")
