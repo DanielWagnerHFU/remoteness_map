@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	cv::Mat a;
 	cout << "Hello CMake." << endl;
+	sm::lbr::printSomething();
 	return 0;
 }

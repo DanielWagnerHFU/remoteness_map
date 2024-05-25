@@ -13,4 +13,5 @@ find_package(OpenCV REQUIRED)
 
 
 # Include sub-projects.
+add_subdirectory ("core")
 add_subdirectory ("app")
