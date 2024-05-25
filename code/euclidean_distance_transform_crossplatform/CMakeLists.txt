@@ -13,4 +13,4 @@ find_package(OpenCV REQUIRED)
 
 
 # Include sub-projects.
-add_subdirectory ("euclidean_distance_transform_app")
+add_subdirectory ("app")
