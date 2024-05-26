@@ -7,10 +7,7 @@ if (POLICY CMP0141)
 endif()
 
 project ("euclidean_distance_transform_crossplatform")
-
-# Shared packages
 find_package(OpenCV REQUIRED)
-
 
 # Include sub-projects.
 add_subdirectory ("core")

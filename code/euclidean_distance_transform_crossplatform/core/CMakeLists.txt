@@ -1,5 +1,5 @@
 include_directories(${OpenCV_INCLUDE_DIRS})
-add_library(core STATIC src/some.cpp)
+add_library(core STATIC "src/CV2EuclideanDistanceTransformStrategy.cpp" "src/DistanceTransformContext.cpp" )
 target_link_libraries(core PUBLIC ${OpenCV_LIBS})
 target_include_directories(core
     PUBLIC

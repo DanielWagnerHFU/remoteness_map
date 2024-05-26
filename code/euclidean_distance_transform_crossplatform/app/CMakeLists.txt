@@ -1,5 +1,5 @@
 ﻿include_directories(${OpenCV_INCLUDE_DIRS})
-add_executable (app "euclidean_distance_transform_app.cpp" "euclidean_distance_transform_app.h")
+add_executable (app   "App.cpp")
 target_link_libraries(app PUBLIC ${OpenCV_LIBS})
 target_link_libraries(app PRIVATE core)
 target_include_directories(app
