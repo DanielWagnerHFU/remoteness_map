@@ -7,8 +7,12 @@ if (POLICY CMP0141)
 endif()
 
 project ("euclidean_distance_transform_crossplatform")
-find_package(OpenCV REQUIRED)
 
+#Global Dependencys
+find_package(OpenCV REQUIRED)
+#Testing
+enable_testing()
 # Include sub-projects.
 add_subdirectory ("core")
 add_subdirectory ("app")
+add_subdirectory ("tests")
