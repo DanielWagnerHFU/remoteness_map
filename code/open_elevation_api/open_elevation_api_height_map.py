@@ -1,6 +1,7 @@
 import numpy as np
 from pyproj import Proj, transform
 import matplotlib.pyplot as plt
+
 bounds = [[48.26666056432782, 8.8326872670595], [48.28782586542801, 8.873957456581033]]
 
 in_proj = Proj(init='epsg:4326')  # Geographic coordinate system (longitude, latitude)
